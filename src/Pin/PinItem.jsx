@@ -7,8 +7,17 @@ const defaultStyle = {
   padding: "0.5rem 0.25rem"
 };
 
+const successDefaultStyle = {
+  width: "2rem",
+  height: "2rem",
+  borderRadius: "0.25rem",
+  padding: "0.5rem 0.25rem",
+  color: "green",
+  border: "3px solid green"
+};
+
 const PinItem = React.forwardRef(
-  ({ length, handleChange, handleBackSpace }, ref) => {
+  ({ length, handleChange, handleBackSpace, values }, ref) => {
     const handleKeyUp = (e) => {
       console.log(e.code);
       switch (e.code) {
@@ -29,15 +38,23 @@ const PinItem = React.forwardRef(
         }
       }
     };
-
     return (
       <div>
-        <input
-          ref={ref}
-          maxLength={length}
-          style={defaultStyle}
-          onKeyUp={handleKeyUp}
-        />
+        {values[values.length - 1] !== "" ? (
+          <input
+            ref={ref}
+            maxLength={length}
+            style={successDefaultStyle}
+            onKeyUp={handleKeyUp}
+          />
+        ) : (
+          <input
+            ref={ref}
+            maxLength={length}
+            style={defaultStyle}
+            onKeyUp={handleKeyUp}
+          />
+        )}
       </div>
     );
   }

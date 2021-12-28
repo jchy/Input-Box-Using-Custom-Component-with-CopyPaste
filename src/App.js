@@ -9,7 +9,16 @@ export default function App() {
       <h1>Custom Component</h1>
       <PinInput onChange={(pin) => setState(pin)} />
       <hr />
-      <div>{state}</div>
+      <div>
+        {state.length === 5 ? (
+          <span style={{ color: "green" }}>
+            PIN: {state} <br />
+            STATUS: SUCCESS
+          </span>
+        ) : (
+          state
+        )}
+      </div>
     </div>
   );
 }

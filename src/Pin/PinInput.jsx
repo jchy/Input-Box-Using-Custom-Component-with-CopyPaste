@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import PinItem from "./PinItem";
 
-function PinInput({ noOfBoxes = 4, length = 1, onChange }) {
+function PinInput({ noOfBoxes = 5, length = 1, onChange }) {
   const [values, setValues] = useState(() => new Array(noOfBoxes).fill(""));
   const arr = new Array(noOfBoxes).fill(0);
   const ref = useRef([]);
@@ -64,6 +64,7 @@ function PinInput({ noOfBoxes = 4, length = 1, onChange }) {
           handleChange={(v) => handleChange(v, i)}
           handleBackSpace={(v) => handleBackSpace(v, i)}
           length={length}
+          values={values}
         />
       ))}
     </div>
